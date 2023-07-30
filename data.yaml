@@ -1,0 +1,98 @@
+victory: false
+intro_text: "Vitej v nasi nove hre!!!"
+victory_text: "Gratuluji, dohral si hru!"
+active_room_id: obyvak
+
+obyvak:
+  popis: "Stojis v obycejnem obyvaku, pachne to tady."
+  moznosti:
+    paka_dole:
+      visible: true
+      popis: "Na zdi vidis starou paku, dala by se prehodit nahoru."
+      keywords:
+        - paku
+        - paka
+      actions:
+        - zatahni
+        - prepni
+        - prehodit
+        - nahoru
+      reakce: "Prehodil si paku nahoru, se zaburacenim se otevrely tajne dvere do spajzu."
+      targets:
+        obyvak:
+          moznosti:
+            paka_dole:
+              visible: false
+            paka_nahore:
+              visible: true
+            tajne_dvere:
+              visible: true
+          vychody:
+            jih:
+              visible: true
+    paka_nahoru:
+      visible: false
+      popis: "Na zdi je stara paka, je v horni poloze."
+      keywords:
+        - paku
+        - paka
+      actions:
+        - zatahni
+        - prepni
+        - prehodit
+        - dolu
+      targets:
+        obyvak:
+          moznosti:
+            paka_nahore:
+              visible: true
+            paka_dole:
+              visible: false
+            tajne_dvere:
+              visible: false
+          vychody:
+            jih:
+              visible: false
+    tajne_dvere:
+      visible: false
+      popis: "Na jih vedou jiz otevrene dvere do spajzu."
+  vychody:
+    sever:
+      popis: "Odebral na sever."
+      target: kuchyn
+      visible: true
+    jih:
+      popis: "Odesel si na jih."
+      target: spajz
+      visible: false
+
+kuchyn:
+  popis: "Stojis v kuchyni"
+  vychody:
+    jih:
+      popis: "Odebral ses na jih do obyvaku.."
+      visible: true
+      target: obyvak
+
+spajz:
+  popis: "Stojis v prazdnem spajzu."
+  moznosti:
+    tlacitko:
+      visible: true
+      popis: "Na strope vidis tajne tlacitko, da se stisknout."
+      reakce: "Stisknul si tlacitko."
+      keywords:
+        - tlacitko
+        - cudlik
+      actions:
+        - zmacknu
+        - zmackni
+        - stisknu
+        - stiskni
+      targets:
+        victory: true
+  vychody:
+    sever:
+      popis: "Odebral ses zpet na sever do obyvaku."
+      visible: true
+      target: obyvak
